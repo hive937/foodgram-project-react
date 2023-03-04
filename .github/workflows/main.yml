@@ -59,7 +59,7 @@ jobs:
         host: ${{ secrets.CLOUD_IP }}
         username: ${{ secrets.CLOUD_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
-        #passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
           cd infra
           sudo docker stop $(sudo docker ps -a -q)
