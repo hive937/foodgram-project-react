@@ -2,7 +2,7 @@ FROM python:3.8-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY backend/foodgram/requirements.txt .
 
 RUN pip install -r requirements.txt --no-cache-dir
 
