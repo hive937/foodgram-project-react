@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 
-load_dotenv()
+# load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', default=5432)
+        'ENGINE': 'django.db.backends.postgresql', #os.getenv('DB_ENGINE', default='django.db.backends.postgresql',),
+        'NAME': 'foodgram', #os.getenv('DB_NAME'),
+        'USER': 'foodgram_user', #os.getenv('POSTGRES_USER'),
+        'PASSWORD': 'adminadmin', #os.getenv('POSTGRES_PASSWORD'),
+        'HOST': '127.0.0.1', #os.getenv('DB_HOST'),
+        'PORT': '5432', #os.getenv('DB_PORT', default=5432,)
     }
 }
 
