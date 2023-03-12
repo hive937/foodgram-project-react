@@ -136,7 +136,7 @@ class Favourite(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.user} добавил "{self.recipe}" в Избранное'
+        return f'{User} добавил "{Recipe}" в Избранное'
 
 
 class ShoppingCart(models.Model):
@@ -162,4 +162,4 @@ class ShoppingCart(models.Model):
         ]
 
     def __str__(self):
-        return f'{self.user} добавил "{self.recipe}" в Корзину покупок'
+        return f'{User} добавил "{Recipe}" в Корзину покупок'
