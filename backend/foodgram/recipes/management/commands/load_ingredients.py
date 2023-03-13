@@ -8,6 +8,7 @@ from recipes.models import Ingredient
 
 DATA_ROOT = os.path.dirname(os.path.dirname(os.path.join(settings.BASE_DIR)))
 DATA_IMPORT = os.path.join(DATA_ROOT, 'data')
+print(DATA_ROOT)
 print(DATA_IMPORT)
 
 
