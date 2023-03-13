@@ -90,6 +90,9 @@ sudo docker-compose up -d --build
 
 ## Проект в интернете
 Проект запущен и доступен по [адресу](http://158.160.26.229)
+Инфа для админки: 
+- Логин: cool.parashut@yandex.ru
+- Пароль: admin
 
 ## Автор проекта
 Павел Вервейн | [hive937](https://github.com/hive937)
