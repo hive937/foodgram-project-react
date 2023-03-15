@@ -152,10 +152,11 @@ class ShoppingCart(models.Model):
         related_name='shopping_cart',
         verbose_name='Рецепт',
     )
-    ingredients = models.ForeignKey(
+    ingredients = models.ManyToManyField(
         Ingredient,
-        on_delete=models.CASCADE,
-        verbose_name='Ингредиент',
+        through='IngredientInRecipe',
+        related_name='ingredient_recipes',
+        verbose_name='Ингредиенты'
     )
 
     class Meta:
