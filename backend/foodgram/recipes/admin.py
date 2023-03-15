@@ -15,7 +15,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'author', 'added_in_favorites',
                     'ingredients_in_recipe')
     readonly_fields = ('added_in_favorites',)
-    list_filter = ('author', 'name', 'tags')
+    list_filter = ('author', 'name', 'tags', 'ingredients_in_recipe')
     search_fields = (
         'name', 'author__username', 'tags__name',
         'ingredients__name'
@@ -31,14 +31,11 @@ class RecipeAdmin(admin.ModelAdmin):
         return ", ".join([a.name for a in obj.ingredients.all()])
 
 
-@admin.register(Ingredient, Recipe)
+@admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'measurement_unit', 'recipes_of_ingredients')
+    list_display = ('name', 'measurement_unit',)
     list_filter = ('name',)
-    search_fields = ('recipe__name',)
-
-    def recipes_of_ingredients(self, instance):
-        return instance.Recipe.name
+    search_fields = ('name',)
 
 
 @admin.register(Tag)
