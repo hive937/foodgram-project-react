@@ -18,7 +18,7 @@ class RecipeAdmin(admin.ModelAdmin):
     list_filter = ('author', 'name', 'tags')
     search_fields = (
         'name', 'author__username', 'tags__name',
-        'ingredients'
+        'ingredients__name'
     )
     inlines = (IngredientInRecipeInline,)
 
