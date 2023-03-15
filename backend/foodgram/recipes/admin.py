@@ -7,16 +7,13 @@ from .models import (Favourite, Ingredient, IngredientInRecipe, Recipe,
 
 class IngredientInRecipeInline(admin.TabularInline):
     model = IngredientInRecipe
-    search_fields = ('ingredient__name', 'ingredient__measurement_unit')
-    autocomplete_fields = ('ingredient',)
-    show_change_link = False
-    can_delete = False
     extra = 0
 
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id', 'author', 'added_in_favorites')
+    list_display = ('name', 'id', 'author', 'added_in_favorites',
+                    'ingredients_in_recipe')
     readonly_fields = ('added_in_favorites',)
     list_filter = ('author', 'name', 'tags')
     inlines = (IngredientInRecipeInline,)
@@ -25,12 +22,15 @@ class RecipeAdmin(admin.ModelAdmin):
     def added_in_favorites(self, obj):
         return obj.favorites.count()
 
+    @display(description='Ингредиенты')
+    def ingredients_in_recipe(self, obj):
+        return [a.name for a in obj.ingredients_in_recipes.all()]
+
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('name', 'measurement_unit',)
     list_filter = ('name',)
-    search_fields = ('name', 'measurement_unit',)
 
 
 @admin.register(Tag)
