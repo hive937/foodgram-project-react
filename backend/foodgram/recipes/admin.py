@@ -38,7 +38,7 @@ class IngredientAdmin(admin.ModelAdmin):
     search_fields = ('recipe__name',)
 
     def recipes_of_ingredients(self, instance):
-        return instance.recipe.name
+        return instance.Recipe.name
 
 
 @admin.register(Tag)
