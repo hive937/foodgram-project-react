@@ -17,7 +17,8 @@ class RecipeAdmin(admin.ModelAdmin):
     readonly_fields = ('added_in_favorites',)
     list_filter = ('author', 'name', 'tags')
     search_fields = (
-        'name', 'author', 'tags',
+        'name', 'author__username', 'tags__name',
+        'ingredients'
     )
     inlines = (IngredientInRecipeInline,)
 
