@@ -38,7 +38,7 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'color', 'slug',)
 
 
-@admin.register(ShoppingCart)
+@admin.register(ShoppingCart, Recipe)
 class ShoppingCartAdmin(admin.ModelAdmin):
     list_display = ('user', 'recipe', 'ingredients_in_recipe')
 
