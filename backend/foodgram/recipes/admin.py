@@ -38,14 +38,14 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'color', 'slug',)
 
 
-@admin.register(ShoppingCart, Recipe)
+@admin.register(ShoppingCart)
 class ShoppingCartAdmin(admin.ModelAdmin):
     list_display = ('user', 'recipe', 'ingredients_in_recipe')
     recipe = Recipe
 
     @display(description='Ингредиенты')
-    def ingredients_in_recipe(self, obj: Recipe):
-        return ",".join([a.name for a in obj.ingredients.all()])
+    def ingredients_in_recipe(self, obj):
+        return ",".join([a.name for a in obj.recipe.ingredients.all()])
 
 
 @admin.register(Favourite)
