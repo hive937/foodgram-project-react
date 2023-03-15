@@ -30,6 +30,10 @@ class RecipeAdmin(admin.ModelAdmin):
     def ingredients_in_recipe(self, obj):
         return ", ".join([a.name for a in obj.ingredients.all()])
 
+    @display(description='Тэги')
+    def tags_in_recipe(self, obj):
+        return ", ".join([a.name for a in obj.tags.all()])
+
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
