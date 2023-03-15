@@ -3,7 +3,7 @@ from recipes.models import Ingredient, Recipe, Tag
 
 
 class IngredientFilter(FilterSet):
-    name = filters.CharFilter(lookup_expr='startswith')
+    search_param = 'name'
 
     class Meta:
         model = Ingredient

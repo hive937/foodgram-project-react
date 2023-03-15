@@ -16,6 +16,9 @@ class RecipeAdmin(admin.ModelAdmin):
                     'ingredients_in_recipe')
     readonly_fields = ('added_in_favorites',)
     list_filter = ('author', 'name', 'tags')
+    search_fields = (
+        'name', 'author__username', 'tags__name',
+    )
     inlines = (IngredientInRecipeInline,)
 
     @display(description='Количество в избранных')
@@ -24,7 +27,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
     @display(description='Ингредиенты')
     def ingredients_in_recipe(self, obj):
-        return ",".join([a.name for a in obj.ingredients.all()])
+        return ", ".join([a.name for a in obj.ingredients.all()])
 
 
 @admin.register(Ingredient)
@@ -45,7 +48,7 @@ class ShoppingCartAdmin(admin.ModelAdmin):
 
     @display(description='Ингредиенты')
     def ingredients_in_recipe(self, obj):
-        return ",".join([a.name for a in obj.recipe.ingredients.all()])
+        return ", ".join([a.name for a in obj.recipe.ingredients.all()])
 
 
 @admin.register(Favourite)
