@@ -33,9 +33,13 @@ class RecipeAdmin(admin.ModelAdmin):
 
 @admin.register(Ingredient, Recipe)
 class IngredientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'measurement_unit', 'recipe__name')
+    list_display = ('name', 'measurement_unit', 'recipes_of_ingredients')
     list_filter = ('name',)
     search_fields = ('recipe__name',)
+
+    @display(description='Рецепты')
+    def recipes_of_ingredients(self, obj):
+        return ", ".join([a.name for a in obj.recipe.all()])
 
 
 @admin.register(Tag)
