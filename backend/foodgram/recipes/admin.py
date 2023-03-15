@@ -37,9 +37,8 @@ class IngredientAdmin(admin.ModelAdmin):
     list_filter = ('name',)
     search_fields = ('recipe__name',)
 
-    @display(description='Рецепты')
-    def recipes_of_ingredients(self, obj):
-        return ", ".join([a.name for a in obj.recipe.all()])
+    def recipes_of_ingredients(self, instance):
+        return instance.recipe.name
 
 
 @admin.register(Tag)
