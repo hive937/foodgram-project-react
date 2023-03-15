@@ -122,7 +122,7 @@ class ShoppingCart(models.Model):
     )
     ingredients = models.ManyToManyField(
         Ingredient,
-        through='IngredientInRecipe',
+        on_delete=models.CASCADE,
         related_name='ingredient_recipes',
         verbose_name='Ингредиенты'
     )
