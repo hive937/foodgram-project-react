@@ -24,7 +24,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
     @display(description='Ингредиенты')
     def ingredients_in_recipe(self, obj):
-        return "\n".join([a.name for a in obj.ingredients.all()])
+        return ",".join([a.name for a in obj.ingredients.all()])
 
 
 @admin.register(Ingredient)
@@ -40,7 +40,11 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(ShoppingCart)
 class ShoppingCartAdmin(admin.ModelAdmin):
-    list_display = ('user', 'recipe',)
+    list_display = ('user', 'recipe', 'ingredients_in_recipe')
+
+    @display(description='Ингредиенты')
+    def ingredients_in_recipe(self, obj):
+        return ",".join([a.name for a in obj.ingredients.all()])
 
 
 @admin.register(Favourite)
