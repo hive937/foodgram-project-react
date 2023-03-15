@@ -13,7 +13,7 @@ class IngredientInRecipeInline(admin.TabularInline):
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'author', 'added_in_favorites',
-                    'ingredients')
+                    'ingredients_list')
     readonly_fields = ('added_in_favorites',)
     list_filter = ('author', 'name', 'tags')
     inlines = (IngredientInRecipeInline,)
@@ -22,9 +22,9 @@ class RecipeAdmin(admin.ModelAdmin):
     def added_in_favorites(self, obj):
         return obj.favorites.count()
 
-    @display(description='Ингредиенты')
-    def ingredients_in_recipe(self, obj):
-        return '\n'.join([a.name for a in obj.ingredients_set.all()])
+    # @display(description='Ингредиенты')
+    # def ingredients_in_recipe(self, obj):
+    #     return '\n'.join([a.name for a in obj.ingredients_list_set.all()])
 
 
 @admin.register(Ingredient)
