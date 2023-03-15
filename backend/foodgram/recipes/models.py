@@ -152,6 +152,11 @@ class ShoppingCart(models.Model):
         related_name='shopping_cart',
         verbose_name='Рецепт',
     )
+    ingredients = models.ForeignKey(
+        Ingredient,
+        on_delete=models.CASCADE,
+        verbose_name='Ингредиент',
+    )
 
     class Meta:
         verbose_name = 'Корзина покупок'
